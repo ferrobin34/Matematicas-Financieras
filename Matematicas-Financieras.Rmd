@@ -65,3 +65,78 @@ $$a(t) = (1 + i)^t$$
 Este caso es llamado "Interés compuesto"
 
 ### Valor presente.
+
+$\textbf{Definición 4}$ El valor presente ($VP$) es el valor en el tiempo cero de una inversión y el valor futuro ($VF$) es el valor de una inversión n periodos después.
+
+Si algún fondo es invertido a interés compuesto de una tasa $i$ por periodo, para n periodos, entonces:
+
+$$VF = VP (1 + i)^n$$
+$$VP = \frac{VF}{(1+i)^n}$$
+
+### Tasa Nominal de interés
+
+$\textbf{Definición 4}$ La tasa nominal anual de interés convertible $m$-veces al año es igual a la tasa efectiva por periodo(de $m$) multiplicada por el número de periodos del año en este caso por $m$.
+
+$\textbf{Ejemplo }$ Supongamos que tenemos un fondo que paga interés cada trimestre(4 periodos por año) con tasa efectiva trimestral de $2\%$ (Ocupamos interés compuesto el cual la tasa efectiva trimestral es constante, ¿Por qué?). La tasa nominal anual convertible trimestralmente(4 veces al año) es $8\% = 2\% * 4$. Pero la tasa anual efectiva la calculamos como sigue:
+$$(1 + 0.02)^4 = 1.0824$$
+$$Tasa anual efectiva = 1.0824 -1 = 0.0824$$
+$\textbf{Obs}$ La tasa nominal anual convertible m-veces al año es una tasa artificial que provee una forma de hablar de la tasa periodica en terminos anuales. La tasa efectiva se ocupa para calculos, la nominal no.
+
+En el caso general de $m$ periodos al año denotamos como $i^{(m)}$ a la tasa nominal donde $\frac{i^{(m)}}{m}$ es la tasa efectiva por periodo $m$-ésimo. La tasa anual efectiva es calculada como sigue:
+$$ i = (1+ \frac{i^{(m)}}{m})^m -1$$
+$\textbf{Obs}$ Usualmente verás que el interés es "compuesto" o "convertible" $m$-veces al año. Esto significa que el interés ganado durante cada periodo (de tamaño $\frac{1}{m}$ de año) es "compuesto"(convertido a principal) a final de cada periodo y gana intereses durante el siguiente periodo.
+
+### Tasa de descuento 
+Supongamos que tenemos una tasa anual del $6\%$ y queremos tener al final del año $\$1000$ así que necesitamos invertir:
+$$\frac{1000}{(1+0.06)} = 943.4$$
+
+Para tener en el futuro $\$1000$. Ahora el interés ganado durante el año o lo que le tenemos que descontar a $\$1000$ es:
+$$1000-943.9 = 56.6$$
+Está es la cantidad de descuento, y la tasa de descuento es:
+$$\frac{56.6}{1000} = 0.0566$$
+En términos generales si al final del año queremos $1$, tenemos que invertir al inicio del año $\frac{1}{(1+i)}$ con $i$ la tasa anual efectiva. Así el monto de descuento es $1-\frac{1}{(1+i)}$ y la tasa de descuento $d$ es:
+$$d = \frac{1-\frac{1}{(1+i)}}{1} = 1 -\frac{1}{(1+i)}$$
+
+Es fácil ver que:
+$$d = \frac{i}{1+i}$$
+
+$\textbf{Obs}$ También podemos definir la tasa efectiva de descuento en terminos de la función de acumulación:
+$$d = \frac{a(t+1)-a(t)}{a(t+1)}$$
+De esta forma podemos definir la tasa efectiva de descuento para mas periodos o mas años.
+
+$\textbf{Definición}$ Se define el factor de valor presente $v$ como:
+$$v = \frac{1}{1+i}$$
+
+$\textbf{Obs}$ De la sección anterior es inmediato que:
+$$d = 1-v$$
+$$d = iv$$
+Y además:
+$$i-d = i -\frac{i}{1+i} = i (1-\frac{1}{1+i}) = i(1-v) = id$$
+$$i-d = id$$
+Notación actuarial tenemos:
+$$VP = \frac{VF}{(1+i)^n} = v^nVF$$
+
+###Tasa nominal de descuento
+Una tasa de deescuento puede ser también cotizada como una tasa nominal anual. Por ejemplo si la tasa efectiva de descuento trimestral es $2\%$, podemos decir que la tasa nominal anual de descuento es $8\%$ convertible trimestralmente.
+
+La tasa nominal de descuento convertible m-veces es denotada por $d^{(m)}$. Así con lo que sabemos:
+$$v = 1-d = (1-\frac{d^{(m)}}{m})^m$$
+Algunos problemas requieren conversión de una tasa nominal de interés convertible $m$-veces al añor a una equivalente tasa nominal de descuento convertible p veces al año.Así:
+$$1 = \frac{1+i}{1+i} = \frac{(1+ \frac{i^{(m)}}{m})^m}{1+i} = (1-d)(1+ \frac{i^{(m)}}{m})^m =(1-\frac{d^{(p)}}{p})^p (1+ \frac{i^{(m)}}{m})^m$$
+
+Así:
+$$(1+ \frac{i^{(m)}}{m})^m = (1-\frac{d^{(p)}}{p})^{-p}$$
+
+### Interés compuesto continuo y fuerza de interés
+
+Consideraremos el casi donde el interés es converdito en principal tan pronto como sea ganado, esto inmediatamente empieza a ganar interéses. Como veremos, esto es equivalente a ganar una tasa nominal anual de $i^{(m)}$ donde $m$ tiende a infinito.
+
+$\textbf{Definición}$ Cuando el interés es compuesto continuamente esto es cuanto hacemos tender $m$ a infinito, le llamamos a la tasa de interés, "fuerza de interés".
+
+Sea $j$ la tasa nominal anual convertible $m$ -veces al años, entonces la tasa anual efectiva es:
+
+$$i = (1+\frac{j}{m})^m -1$$
+Haciendo tender $m$ a infinito obtenemos:
+
+$$i = e^j -1$$
+

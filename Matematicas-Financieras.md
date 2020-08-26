@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 Matemáticas financieras
 ================
 
@@ -77,3 +72,24 @@ constantes esto es \(i_{j} = i\) para toda \(j \in \mathbb{N}\),
 entonces: \[a(t) = (1 + i)^t\] Este caso es llamado “Interés compuesto”
 
 ### Valor presente.
+
+\(\textbf{Definición 4}\) El valor presente (\(VP\)) es el valor en el
+tiempo cero de una inversión y el valor futuro (\(VF\)) es el valor de
+una inversión n periodos después.
+
+Si algún fondo es invertido a interés compuesto de una tasa \(i\) por
+periodo, para n periodos, entonces:
+
+\[VF = VP (1 + i)^n\] \[VP = \frac{VF}{(1+i)^n}\]
+
+### Tasa Nominal de interés
+
+\(\textbf{Definición 4}\) La tasa nominal anual de interés convertible
+\(m\)-veces al año es igual a la tasa efectiva por periodo(de \(m\))
+multiplicada por el número de periodos del año en este caso por \(m\).
+
+\(\textbf{Ejemplo }\) Supongamos que tenemos un fondo que paga interés
+cada trimestre(4 periodos por año) con tasa efectiva trimestral de
+\(2\%\) (Ocupamos interés compuesto el cual la tasa efectiva trimestral
+es constante, ¿Por qué?). La tasa nominal anual convertible
+trimestralmente(4 veces al año) es \(8\% = 2\% * 4\).
