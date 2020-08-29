@@ -43,26 +43,22 @@ Para toda *t* ∈ ℝ.
 
 **Obs 3** Tenemos lo siguiente:
 $$i\_{t} = \\frac{a(t)-a(t-1)}{a(t-1)} = \\frac{i}{1 + i(t-1) }$$
-Para todo *t* \> 1, aquí observamos que *a*(*t*) es creciente pero
+Para todo *t* &gt; 1, aquí observamos que *a*(*t*) es creciente pero
 *i*<sub>*t*</sub> es decreciente.
 
-``` r
-simple <- function(x){
-  return(1 + 0.5*x)
-}
-tasa_simple <- function(x){
-  return( 0.5 / (1 + 0.5*(x-1)) )
-}
-curve(simple ,-2,2,lwd = 2 ,main = "Función de acumulación con interés simple a(x) = 1 + 0.5x")
-```
+    simple <- function(x){
+      return(1 + 0.5*x)
+    }
+    tasa_simple <- function(x){
+      return( 0.5 / (1 + 0.5*(x-1)) )
+    }
+    curve(simple ,-2,2,lwd = 2 ,main = "Función de acumulación con interés simple a(x) = 1 + 0.5x")
 
-![](Matematicas-Financieras_files/figure-markdown_github/unnamed-chunk-1-1.png)
+![](Matematicas-Financieras_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
-``` r
-curve(tasa_simple,0,4,lwd = 2 ,main = "i_{t} es decreciente")
-```
+    curve(tasa_simple,0,4,lwd = 2 ,main = "i_{t} es decreciente")
 
-![](Matematicas-Financieras_files/figure-markdown_github/unnamed-chunk-1-2.png)
+![](Matematicas-Financieras_files/figure-markdown_strict/unnamed-chunk-1-2.png)
 
 Por otro lado(sin suponer interés simple) Supongamos que tenemos tasas
 efectivas *i*<sub>*t*</sub> en el *t*-ésimo año para toda *t* ∈ ℕ
@@ -214,7 +210,7 @@ Derivando:
 Así la fuerza de interés *δ* = *a*′(0). Esto nos dice que la fuerza de
 interés *δ* es la tasa(o velocidad) de crecimiento anual al tiempo cero
 de una inversión inicial de una unidad. Si consideramos una inverisón
-inicial *K* \> 0, tendremos:
+inicial *K* &gt; 0, tendremos:
 $$\\delta = \\frac{A'(0)}{A(0)} = \\frac{A'(0)}{K} $$
 Lo cual se puede interpretar como la tasa(velocidad) de crecimiento
 anual al tiempo cero proporcional al balance al timepo 0, el cual es
@@ -304,23 +300,23 @@ $$Tasa-cotizada = \\frac{360}{Días-para-madurar}\* \\frac{Cantidad-de-interés}
 
 ### Relacionando tasas de descuento, fuerza de interés y tasa de interés.
 
-No es dificíl ver que *d* \< *δ* \< *i*, desde que para *i* \> 0:
+No es dificíl ver que *d* &lt; *δ* &lt; *i*, desde que para *i* &gt; 0:
 
-$$\\frac{i}{1+i} \< ln(1+i) \<i$$
-**Demostración** hagamos *x* = 1 + *i* si *i* \> 0 entonces *x* \> 1,
-Así para 1 \< *u* ≤ *x*:
-1 \< *u* \< *u*<sup>2</sup>
+$$\\frac{i}{1+i} &lt; ln(1+i) &lt;i$$
+**Demostración** hagamos *x* = 1 + *i* si *i* &gt; 0 entonces
+*x* &gt; 1, Así para 1 &lt; *u* ≤ *x*:
+1 &lt; *u* &lt; *u*<sup>2</sup>
 
 Entonces:
-$$\\frac{1}{u^2} \< \\frac{1}{u}\< 1$$
+$$\\frac{1}{u^2} &lt; \\frac{1}{u}&lt; 1$$
 Integrando de 1 a *x*:
 
-$$\\int\_1^x \\frac{1}{u^2}du \<\\int\_1^x \\frac{1}{u}du\<\\int\_1^x 1du$$
+$$\\int\_1^x \\frac{1}{u^2}du &lt;\\int\_1^x \\frac{1}{u}du&lt;\\int\_1^x 1du$$
 Equivale a:
 
-$$1-\\frac{1}{x} \< \\ln(x) \< x-1$$
+$$1-\\frac{1}{x} &lt; \\ln(x) &lt; x-1$$
 Sustituyendo *x* = 1 + *i*
-$$\\frac{i}{1+i} \< \\ln(1+i) \<i$$
+$$\\frac{i}{1+i} &lt; \\ln(1+i) &lt;i$$
 Como se quería.
 
 ### Resolviendo para VP,VF, i y n.

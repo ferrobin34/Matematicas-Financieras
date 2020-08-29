@@ -1,8 +1,6 @@
 ---
 title: "Matemáticas financieras"
-output:
-  md_document:
-    variant: markdown_github
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
