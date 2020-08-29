@@ -1,6 +1,8 @@
 ---
 title: "Matemáticas financieras"
-output: github_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE}
@@ -127,16 +129,100 @@ $$1 = \frac{1+i}{1+i} = \frac{(1+ \frac{i^{(m)}}{m})^m}{1+i} = (1-d)(1+ \frac{i^
 Así:
 $$(1+ \frac{i^{(m)}}{m})^m = (1-\frac{d^{(p)}}{p})^{-p}$$
 
-### Interés compuesto continuo y fuerza de interés
+### Interés compuesto continuamente y fuerza de interés
 
-Consideraremos el casi donde el interés es converdito en principal tan pronto como sea ganado, esto inmediatamente empieza a ganar interéses. Como veremos, esto es equivalente a ganar una tasa nominal anual de $i^{(m)}$ donde $m$ tiende a infinito.
+Siempre considerarémos que el interés es compuesto a menos que se diga lo contrario. Esto es, la función de acumulación está dada por:
+$$a(t) = (1+i)^t$$
+Para alguna tasa de interés $i \in \mathbb{R}$.
 
-$\textbf{Definición}$ Cuando el interés es compuesto continuamente esto es cuanto hacemos tender $m$ a infinito, le llamamos a la tasa de interés, "fuerza de interés".
+En está sección consideraremos el caso dónde el interés es compuesto continuamente. El interés compuesto continuamente no es un diferente tipo del interés compuesto, solo es una forma distinta de verlo.
 
-Sea $j$ la tasa nominal anual convertible $m$ -veces al años, entonces la tasa anual efectiva es:
+Si una inversión gana interés compuesto a una tasa de interés anual efectiva de $8\%$, su valor incrementa anualmente por un factor de $1.08$. Sin embargo, si eso gana interés a una tasa nominal anual de $8\%$ convertible semi-anualmente, entonces está ganando una tasa semi-anual efectiva del $4\%$, y su valor incremente anualmente por un facotr de $1.0816 = (1.04)^2$. Esto es equivalente a una tasa anual efectiva del $8.16\%$
 
-$$i = (1+\frac{j}{m})^m -1$$
-Haciendo tender $m$ a infinito obtenemos:
+En general para una tasa anual nominal del $8\%$ convertible $m$-veces al año, la tasa anual efectiva es:
+$$i = (1+\frac{0.08}{m})^m - 1$$
 
-$$i = e^j -1$$
 
+Consideremos la situación mencionada antes, donde el interés es convertible a principal continuamente como es ganado. En ese caso , m tiende a infinito y la tasa de interés anual efectiva es:
+$$\lim_{m \to \infty} [(1+\frac{0.08}{m})^m - 1] = e^{0.08}-1 \approx 8.3287\%$$
+La anterior igualdad se da por la definición de la exponencial.
+
+$\textbf{Definición}$ Cuando el interés es compuesto continuamente, nosotros llamamos a la exponente una "Fuerza de interés" y a denotamos por la letra $\delta$.
+
+Bajo el interés compuesto continuamente si la fuerza de interés es $\delta$ entonces:
+$$a(t) =(1+i)^t = e^{t\delta}$$
+Derivando:
+$$a'(t) =  \delta e^{t\delta} = \delta a(t) \dots (1)$$
+Así la fuerza de interés $\delta = a'(0)$. Esto nos dice que la fuerza de interés $\delta$ es la tasa(o velocidad) de crecimiento anual al tiempo cero de una inversión inicial de una unidad.
+Si consideramos una inverisón inicial $K > 0$, tendremos:
+$$\delta = \frac{A'(0)}{A(0)} = \frac{A'(0)}{K} $$
+Lo cual se puede interpretar como la tasa(velocidad) de crecimiento anual al tiempo cero proporcional al balance al timepo 0, el cual es $K$.
+
+$\textbf{Obs}$ En estos casos nos referimos a una tasa como "velocidad" pues es el significado de la derivada $a'(0)$ es una "velocidad".
+
+$\textbf{Ejemplo}$ Siguiendo con el ejemplo anterior. La fuerza de interés era $8\%$, así que la inversión tiene un valor de $100$ al tiempo cero, entonces está ganando un interés a una tasa de crecimiento de $K*\delta =100*8\%=8$ por año al tiempo cero. En el último día del año, el principal creció a $108.305$(Verifíquelo) y está ganando una tasa de creimiento de $A'(t) = 100* 8 \% *e^{8\%} = 8.6662$.
+
+Al final del año $A(1) = 108.3287$, esto es la tasa anual efectiva del primer año es $8.3287\%$. Recordemos que al principio del año la tasa de crecimiento es de $8\%$ y al final de $8.6662\%$ Se puede considerar que la tasa promedio es $8.3287\%$ ya que por teorema fundamental del cálculo:
+$$\int _0^1 A'(t) = A(1)-A(0) = K(1+i) -K$$
+$$i = \frac{\int_0^1 A'(t)}{K}$$
+Que en este caso:
+$$8.3287\% = \frac{\int_0^1A'(t)}{100} = a(1)-a(0) = e^{8\%}-1 $$
+Así la tasa anual efectiva del primer año es un "promedio" de las tasas(velocidades) de crecimiento de la inversión a lo largo del primer año.
+
+$\textbf{Obs}$ Recuerda que el interés compuesto continuamente no es un diferente tipo del interés compuesto. La fuerza de interés, $\delta$, es simplemnte una forma de describir la tasa a la cual la inversión está creciento con interés compuesto, podemos ocupar la igualdad:
+$$1+i = e^{\delta}$$
+para pasar de la fuerza de interés a una tasa de interés anual efectiva(o viceversa).
+
+Más aún para una fuerza de interés $\delta$ y su equivalente tasa anual efectiva $i$ tenemos las siguientes igualdades:
+$$1+i = e^{\delta}$$
+$$(1+i)^n = e^{n\delta}$$
+$$\delta = \ln(1+i)$$
+$$v^n = (1+i)^{-n} = e^{-n\delta}$$
+En la discusión anterior, asumimos una fuerza de interés constante. Pero hay situaciones donde la fuerza de interés varia en el tiempo.
+
+$\textbf{Definición}$ Definimos la fuerza de interés instantanea al tiempo $t$, como:
+$$\delta(t) = \frac{a'(t)}{a(t)}$$
+La cual tiene sentido por la igualdad $(1)$. $\delta(t)$ es la tasa(velocidad) a la cual la inversión está ganando interés al tiempo $t$, expresado como un porcentaje de $a(t)$ (Porque se divide entre a(t)). Está es la definición de fuerza de interés, pero como está puede cambiar como función del tiempo $\delta(t)$, es llamada fuerza de interés instantánea al tiempo $t$.
+Para la función de acumulación con una constante de fuerza de interés $\delta$ (Esto es, cuando $a(t) = e^{t\delta}$), la instantánea coincide:
+
+$$\delta(t) = \frac{a'(t)}{a(t)} = \frac{\delta e^{t \delta}}{e^{t \delta}} = \delta$$
+
+Por otro lado tenemos las relaciones que no son dificiles de verificar:
+
+$$\delta(t) = \frac{d}{dt} \ln (a(t))$$
+$$\int_0^k \delta(t)dt = \ln(a(k)) -\ln(a(0)) = \ln(a(k))$$
+Esto implica:
+$$a(t) = e^{\int_0^t \delta(u)du}$$
+
+
+### Tasas cotizadas para Treasures Bills
+
+### United States Treasure Bills
+
+Los T-bills son titulos de valores a corto plazo de Estados Unidos. Un inversor quien comprar T-bills está prestando dinero al gobierno de los Estados Unidos por un periodo de 4, 13, 26 o 52 semanas. El inversor recibirá la cantidad facial del T-bill en la fecha de maduración. Por ejemplo, un inversor podría pagar $960$ para un T-bill de 52 semanas con una cantidad facial de $100$. Al final de las 52 semanas, el tesoro de US pagará el valor madurado de $1000$ y el inversor habrá ganado un retorno de:
+$$\frac{1000}{960} -1 = 4.167\%$$
+Esta es la tasa efectiva de interés por las 52 semanas(364 días) del T-bill. Tecnicamente, la tasa anual efectiva es un poco mas grande que está, desde que $4.167\%$ fue ganado in poco menos que un año.
+
+Tasas cotizadas para T-bills de US no son ni tasas efectivas de interés ni tasas nominales. En su lugar, son expresadas como "Rendimiento de descuento bancario", el cual es calculado por la siguiente fórmula:
+$$Tasa-cotizada = \frac{360}{Días-para-madurar}* \frac{Cantidad-de-interés}{ Valor-de-maduración}$$
+
+### Relacionando tasas de descuento, fuerza de interés y tasa de interés.
+No es dificíl ver que $d < \delta <i$, desde que para $i>0$:
+
+$$\frac{i}{1+i} < ln(1+i) <i$$
+$\textbf{Demostración}$ hagamos $x = 1 + i$ si $i>0$ entonces $x > 1$, Así para $1< u \leq x$:
+$$1< u< u^2$$
+
+Entonces:
+$$\frac{1}{u^2} < \frac{1}{u}< 1$$
+Integrando de $1$ a $x$:
+
+$$\int_1^x \frac{1}{u^2}du <\int_1^x \frac{1}{u}du<\int_1^x 1du$$
+Equivale a:
+
+$$1-\frac{1}{x} < \ln(x) < x-1$$
+Sustituyendo $x = 1+i$
+$$\frac{i}{1+i} < \ln(1+i) <i$$
+Como se quería.
+
+### Resolviendo para VP,VF, i y n.
